@@ -8,7 +8,7 @@ var markers = []
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-  initMap(); // added 
+  initMap(); // added
   fetchNeighborhoods();
   fetchCuisines();
 });
@@ -78,7 +78,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: '<your MAPBOX API KEY HERE>',
+    mapboxToken: 'pk.eyJ1Ijoia2VkYXJiaCIsImEiOiJjamwxNTJic2kxODR1M3ZyMDc0ZXZqcjllIn0.SQKrRKvScIPoSyzWrK-zNg',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -156,31 +156,36 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  * Create restaurant HTML.
  */
 createRestaurantHTML = (restaurant) => {
-  const li = document.createElement('li');
+  const imgSrc = DBHelper.imageUrlForRestaurant(restaurant);
+  const detailsLink = DBHelper.urlForRestaurant(restaurant);
 
-  const image = document.createElement('img');
-  image.className = 'restaurant-img';
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  li.append(image);
+  const details =
+  `
 
-  const name = document.createElement('h1');
-  name.innerHTML = restaurant.name;
-  li.append(name);
+  <img src="${imgSrc}" alt="${restaurant.name}" class="restaurant__img">
 
-  const neighborhood = document.createElement('p');
-  neighborhood.innerHTML = restaurant.neighborhood;
-  li.append(neighborhood);
 
-  const address = document.createElement('p');
-  address.innerHTML = restaurant.address;
-  li.append(address);
+    <h5 class="restaurant__name">${restaurant.name}</h5>
+    <div class="restaurant__location">
+        <svg>
+            <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+        </svg>
+        <p>${restaurant.neighborhood}</p>
+    </div>
 
-  const more = document.createElement('a');
-  more.innerHTML = 'View Details';
-  more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
+    <div class="restaurant__area">
+        <svg>
+            <use xlink:href="img/sprite.svg#icon-expand"></use>
+        </svg>
+        <p>${restaurant.address}</p>
+    </div>
+    <a class="btn restaurant__btn" href="${detailsLink}">View Details</a>
+  `
 
-  return li
+  const newDiv = document.createElement("div");
+  newDiv.className = "restaurant";
+  newDiv.innerHTML = details;
+  return newDiv
 }
 
 /**
@@ -197,7 +202,9 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 
-} 
+}
+
+
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map

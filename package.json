@@ -1,0 +1,17 @@
+{
+  "name": "restaurant-review-app",
+  "version": "1.0.0",
+  "description": "restaurant review app",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/single.scss css/style.css -w",
+    "compile": "node-sass sass/main.scss css/styles.css -w",
+    "dev":"lite-server"
+  },
+  "author": "Kedar Bhusal",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.4.0",
+    "node-sass": "^4.9.3"
+  }
+}
