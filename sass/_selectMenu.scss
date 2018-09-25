@@ -13,7 +13,7 @@
         grid-column: 1 / -1;
     }
 
-    & __items {
+    &__items {
         display: grid;
         grid-template-columns: min-content max-content;
         grid-column-gap: 2rem;
@@ -32,5 +32,11 @@
         height: 3rem;
         overflow: hidden;
         width: 20rem;
+    }
+
+
+    &__logo {
+        height: 6rem;
+        padding-left: 4rem;
     }
 }

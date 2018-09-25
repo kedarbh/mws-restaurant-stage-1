@@ -161,22 +161,25 @@ body {
   @media only screen and (max-width: 50em) {
     .filter {
       grid-column: 1 / -1; } }
-  .filter __items {
+  .filter__items {
     display: grid;
     grid-template-columns: min-content max-content;
     grid-column-gap: 2rem;
     grid-row-gap: 5vh;
     align-items: center; }
     @media only screen and (max-width: 50em) {
-      .filter __items {
+      .filter__items {
         grid-template-columns: repeat(3, min-content max-content); } }
     @media only screen and (max-width: 37.5em) {
-      .filter __items {
+      .filter__items {
         grid-template-columns: min-content max-content; } }
   .filter select {
     height: 3rem;
     overflow: hidden;
     width: 20rem; }
+  .filter__logo {
+    height: 6rem;
+    padding-left: 4rem; }
 
 .restaurants {
   grid-column: center-start / center-end;
