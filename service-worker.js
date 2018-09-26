@@ -1,4 +1,4 @@
-let cacheName = 'cache-v1';
+let cacheName = 'cache-v2';
 
 //list of all filea to be chached
 const assets = ['/',
@@ -37,10 +37,10 @@ self.addEventListener('fetch', function (event) {
 	event.respondWith(
 		caches.match(event.request).then(function (response) {
 			if (response) {
-				console.log('found it', event.request, 'in cache');
+				// console.log('I found', event.request, 'in cache');
 				return response;
 			} else {
-				cosole.log('not found')
+				// console.log('not found')
 				return fetch(event.request);
 			}
 		})

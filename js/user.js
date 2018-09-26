@@ -8,8 +8,8 @@ closeNav = () => {
 }
 
 //register service worker
-navigator.serviceWorker.register('/js/sw.js').then(function(reg) {
-	console.log("Service worker is registered.");
+navigator.serviceWorker.register('./service-worker.js').then(function(reg) {
+	console.log("Service worker is registered", reg.scope);
 }).catch(function(err){
-	console.log("Error:", err);
+	console.log("Service Worker failed to register. ", err);
 });
