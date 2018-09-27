@@ -179,7 +179,7 @@ createRestaurantHTML = (restaurant) => {
         </svg>
         <p>${restaurant.address}</p>
     </div>
-    <a class="btn restaurant__btn" href="${detailsLink}">View Details</a>
+    <a class="btn restaurant__btn" href="${detailsLink}" aria-label="${restaurant.name} view details">View Details</a>
   `
 
   const newDiv = document.createElement("div");
