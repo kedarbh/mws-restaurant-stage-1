@@ -162,7 +162,7 @@ createRestaurantHTML = (restaurant) => {
   const details =
   `
 
-  <img src="${imgSrc}" alt="${restaurant.name}" class="restaurant__img">
+  <img src="./${imgSrc}" alt="${restaurant.name}" class="restaurant__img">
 
 
     <h5 class="restaurant__name">${restaurant.name}</h5>
