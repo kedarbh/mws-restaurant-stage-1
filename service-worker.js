@@ -1,7 +1,7 @@
 let cacheName = 'cache-v2';
 
 //list of all filea to be chached
-const assets = ['/',
+const assets = ['./',
 				'./index.html',
 				'./restaurant.html',
 				'./js/dbhelper.js',
